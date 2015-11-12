@@ -4,11 +4,18 @@ import sys
 def shift_base(ar,b):
     # creates the variable length code for each rank
     out,arg=[],int(ar)
+    print arg,arg/b
+
+    arg=arg-(arg/b)
+    print arg,arg/b
+
     while arg >0:
-		out.append(arg%b) # rip off digits 
-		arg=arg/b
-    out[-1]=out[-1]+128 # set last byte's flag for variable operation
-    return out[::-1]
+        print arg%b
+        out.append(arg%b)
+        #out.append(arg%b) # rip off digits 
+        arg=arg/b
+    out[-1]=out[-1]+128
+    return out
     
 def to_binary(l):
     # create binary data from list 
@@ -25,7 +32,7 @@ def write_file(l,f):
     
 def run():
     d=shift_base(sys.argv[1],128) # example use 
-
+    print d
     
 
 
